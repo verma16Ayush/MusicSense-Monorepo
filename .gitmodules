@@ -1,0 +1,6 @@
+[submodule "MusicSense"]
+	path = MusicSense
+	url = https://www.github.com/verma16Ayush/MusicSense
+[submodule "musicsense-frontend"]
+	path = musicsense-frontend
+	url = https://www.github.com/verma16Ayush/musicsense-frontend
