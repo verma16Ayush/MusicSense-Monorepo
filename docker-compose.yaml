@@ -1,0 +1,22 @@
+services:
+  mysql-for-musicsense:
+    # image: mysql:8.0.33
+    build: ./initdb
+    container_name: mysql-for-musicsense
+    restart: always
+    tty: true
+    stdin_open: true
+    ports:
+      - "3307:3306"
+      - "33061:33060"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=musicsense
+  
+  musicsense-frontend:
+    build: ./musicsense-frontend/
+    container_name: musicsense-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    
