@@ -35,6 +35,7 @@ services:
       - MYSQL_DATABASE=musicsense
       - MYSQL_DATABASE_HOST=mysql-for-musicsense
       - MYSQL_DATABASE_USERNAME=root
+      - PYTHONUNBUFFERED=0
     ports:
       - "8000:8000"
     networks:
