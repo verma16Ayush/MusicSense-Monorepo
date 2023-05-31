@@ -12,6 +12,10 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=musicsense
+      # - MYSQL_DATABASE_HOST=0.0.0.0:3306
+      - MYSQL_DATABASE_USERNAME=root
+    networks:
+      - musicsense-network
   
   musicsense-frontend:
     build: ./musicsense-frontend/
@@ -19,4 +23,21 @@ services:
     restart: always
     ports:
       - "3000:3000"
-    
+    networks:
+      - musicsense-network
+
+  musicsense-backend:
+    build: ./MusicSense/ 
+    container_name: musicsense-backend
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=musicsense
+      - MYSQL_DATABASE_HOST=mysql-for-musicsense
+      - MYSQL_DATABASE_USERNAME=root
+    ports:
+      - "8000:8000"
+    networks:
+      - musicsense-network   
+networks:
+  musicsense-network:
